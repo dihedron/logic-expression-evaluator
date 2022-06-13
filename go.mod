@@ -1,4 +1,4 @@
-module github.com/mgudov/logic-expression-parser
+module github.com/dihedron/logic-expression-evaluator
 
 go 1.17
 
