@@ -31,6 +31,10 @@ func (s StringX) Value() interface{} {
 	return s.Val
 }
 
+func (s StringX) Evaluate(against interface{}) (bool, error) {
+	return false, nil
+}
+
 func parseString(b []byte) (*StringX, error) {
 	val := strings.TrimSpace(string(b))
 	val = strings.TrimPrefix(val, `"`)
@@ -61,6 +65,10 @@ func (i IntegerX) String() string {
 
 func (i IntegerX) Value() interface{} {
 	return i.Val
+}
+
+func (i IntegerX) Evaluate(against interface{}) (bool, error) {
+	return false, nil
 }
 
 func parseInteger(b []byte) (*IntegerX, error) {
@@ -96,6 +104,10 @@ func (f FloatX) Value() interface{} {
 	return f.Val
 }
 
+func (f FloatX) Evaluate(against interface{}) (bool, error) {
+	return false, nil
+}
+
 func parseFloat(b []byte) (*FloatX, error) {
 	val, err := strconv.ParseFloat(strings.TrimSpace(string(b)), 64)
 	if err != nil {
@@ -127,6 +139,10 @@ func (v BooleanX) String() string {
 	} else {
 		return "false"
 	}
+}
+
+func (v BooleanX) Evaluate(against interface{}) (bool, error) {
+	return false, nil
 }
 
 func parseBoolean(b []byte) (*BooleanX, error) {
@@ -163,6 +179,10 @@ func (NullX) String() string {
 
 func (NullX) Value() interface{} {
 	return nil
+}
+
+func (v NullX) Evaluate(against interface{}) (bool, error) {
+	return false, nil
 }
 
 func parseNull() (*NullX, error) {

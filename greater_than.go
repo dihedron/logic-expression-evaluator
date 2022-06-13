@@ -27,6 +27,10 @@ func (s GreaterThanX) String() string {
 	return s.Param.String() + ">" + s.Value.String()
 }
 
+func (e GreaterThanX) Evaluate(against interface{}) (bool, error) {
+	return false, nil
+}
+
 func parseGreaterThan(left, right interface{}) (*GreaterThanX, error) {
 	param, value, err := parseStatement(left, right)
 	if err != nil {
@@ -60,6 +64,10 @@ func (s GreaterThanEqualX) Equals(other Expression) bool {
 
 func (s GreaterThanEqualX) String() string {
 	return s.Param.String() + ">=" + s.Value.String()
+}
+
+func (e GreaterThanEqualX) Evaluate(against interface{}) (bool, error) {
+	return false, nil
 }
 
 func parseGreaterThanEqual(left, right interface{}) (*GreaterThanEqualX, error) {

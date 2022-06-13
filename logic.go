@@ -72,6 +72,10 @@ func (e AndX) String() string {
 	return strings.Join(items, " && ")
 }
 
+func (e AndX) Evaluate(against interface{}) (bool, error) {
+	return false, nil
+}
+
 func parseAnd(elements ...interface{}) (*AndX, error) {
 	expr := parseExpressions(elements...)
 	return And(expr...), nil
@@ -128,6 +132,10 @@ func (e OrX) String() string {
 		items = append(items, disjunction.String())
 	}
 	return strings.Join(items, " || ")
+}
+
+func (e OrX) Evaluate(against interface{}) (bool, error) {
+	return false, nil
 }
 
 func parseOr(elements ...interface{}) (*OrX, error) {

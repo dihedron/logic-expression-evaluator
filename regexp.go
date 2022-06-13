@@ -28,6 +28,10 @@ func (e RegexpX) Value() interface{} {
 	return e.Regexp
 }
 
+func (e RegexpX) Evaluate(against interface{}) (bool, error) {
+	return false, nil
+}
+
 func parseRegexp(b []byte) (*RegexpX, error) {
 	re, err := regexp.Compile(string(b))
 	if err != nil {
@@ -60,6 +64,10 @@ func (e MatchRegexpX) Equals(other Expression) bool {
 
 func (e MatchRegexpX) String() string {
 	return e.Param.String() + " =~ " + e.Regexp.String()
+}
+
+func (e MatchRegexpX) Evaluate(against interface{}) (bool, error) {
+	return false, nil
 }
 
 func (e MatchRegexpX) GetParam() *ParamX {
@@ -106,6 +114,10 @@ func (e NotMatchRegexpX) Equals(other Expression) bool {
 
 func (e NotMatchRegexpX) String() string {
 	return e.Param.String() + " =~ " + e.Regexp.String()
+}
+
+func (e NotMatchRegexpX) Evaluate(against interface{}) (bool, error) {
+	return false, nil
 }
 
 func (e NotMatchRegexpX) GetParam() *ParamX {

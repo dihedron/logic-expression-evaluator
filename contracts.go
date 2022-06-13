@@ -2,11 +2,13 @@ package lep
 
 type Expression interface {
 	Equals(Expression) bool
-	Evaluate(ctx interface{}) (bool, error)
 	String() string
+	Evaluate(ctx interface{}) (bool, error)
 }
 
 type Value interface {
 	Expression
+	// Equals(Expression) bool
+	// String() string
 	Value() interface{}
 }

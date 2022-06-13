@@ -27,6 +27,10 @@ func (p ParamX) Value() interface{} {
 	return p.Name
 }
 
+func (e ParamX) Evaluate(against interface{}) (bool, error) {
+	return false, nil
+}
+
 func parseParam(b []byte) (*ParamX, error) {
 	return Param(strings.TrimSpace(string(b))), nil
 }

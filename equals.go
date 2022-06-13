@@ -27,6 +27,10 @@ func (e EqualsX) String() string {
 	return e.Param.String() + "=" + e.Value.String()
 }
 
+func (e EqualsX) Evaluate(against interface{}) (bool, error) {
+	return false, nil
+}
+
 func parseEquals(left, right interface{}) (*EqualsX, error) {
 	param, value, err := parseStatement(left, right)
 	if err != nil {
@@ -60,6 +64,10 @@ func (e NotEqualsX) Equals(other Expression) bool {
 
 func (e NotEqualsX) String() string {
 	return e.Param.String() + "!=" + e.Value.String()
+}
+
+func (e NotEqualsX) Evaluate(against interface{}) (bool, error) {
+	return false, nil
 }
 
 func parseNotEquals(left, right interface{}) (*NotEqualsX, error) {

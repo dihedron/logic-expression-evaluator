@@ -27,6 +27,10 @@ func (s LessThanX) String() string {
 	return s.Param.String() + "<" + s.Value.String()
 }
 
+func (e LessThanX) Evaluate(against interface{}) (bool, error) {
+	return false, nil
+}
+
 func parseLessThan(left, right interface{}) (*LessThanX, error) {
 	param, value, err := parseStatement(left, right)
 	if err != nil {
@@ -60,6 +64,10 @@ func (s LessThanEqualX) Equals(other Expression) bool {
 
 func (s LessThanEqualX) String() string {
 	return s.Param.String() + "<=" + s.Value.String()
+}
+
+func (e LessThanEqualX) Evaluate(against interface{}) (bool, error) {
+	return false, nil
 }
 
 func parseLessThanEqual(left, right interface{}) (*LessThanEqualX, error) {

@@ -1,8 +1,9 @@
 package lep
 
 import (
-	"github.com/araddon/dateparse"
 	"time"
+
+	"github.com/araddon/dateparse"
 )
 
 type DateTimeX struct {
@@ -32,6 +33,10 @@ func (v DateTimeX) String() string {
 
 func (v DateTimeX) Value() interface{} {
 	return v.Val
+}
+
+func (v DateTimeX) Evaluate(against interface{}) (bool, error) {
+	return false, nil
 }
 
 func parseDateTime(val interface{}) (*DateTimeX, error) {

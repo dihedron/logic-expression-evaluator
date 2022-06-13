@@ -41,6 +41,10 @@ func (e SliceX) Value() interface{} {
 	return e.Values
 }
 
+func (e SliceX) Evaluate(against interface{}) (bool, error) {
+	return false, nil
+}
+
 func parseSlice(items ...interface{}) (*SliceX, error) {
 	var values []Value
 	for _, e := range parseExpressions(items...) {
@@ -75,6 +79,10 @@ func (e InSliceX) Equals(other Expression) bool {
 
 func (e InSliceX) String() string {
 	return e.Param.String() + " in " + e.Slice.String()
+}
+
+func (e InSliceX) Evaluate(against interface{}) (bool, error) {
+	return false, nil
 }
 
 func (e InSliceX) GetParam() *ParamX {
@@ -121,6 +129,10 @@ func (e NotInSliceX) Equals(other Expression) bool {
 
 func (e NotInSliceX) String() string {
 	return e.Param.String() + " not_in " + e.Slice.String()
+}
+
+func (e NotInSliceX) Evaluate(against interface{}) (bool, error) {
+	return false, nil
 }
 
 func (e NotInSliceX) GetParam() *ParamX {
