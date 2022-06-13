@@ -2,6 +2,7 @@ package lep
 
 import (
 	"fmt"
+	"log"
 	"strconv"
 	"strings"
 )
@@ -142,6 +143,7 @@ func (v BooleanX) String() string {
 }
 
 func (v BooleanX) Evaluate(against interface{}) (bool, error) {
+	log.Printf("here with %T", against)
 	return false, nil
 }
 

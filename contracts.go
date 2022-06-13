@@ -8,7 +8,5 @@ type Expression interface {
 
 type Value interface {
 	Expression
-	// Equals(Expression) bool
-	// String() string
 	Value() interface{}
 }

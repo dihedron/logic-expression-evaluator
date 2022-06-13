@@ -73,7 +73,15 @@ func (e AndX) String() string {
 }
 
 func (e AndX) Evaluate(against interface{}) (bool, error) {
-	return false, nil
+	var outcome bool
+	for _, conjunct := range e.Conjuncts {
+		result, err := conjunct.Evaluate(against)
+		if err != nil {
+			return false, err
+		}
+		outcome = outcome && result
+	}
+	return outcome, nil
 }
 
 func parseAnd(elements ...interface{}) (*AndX, error) {
